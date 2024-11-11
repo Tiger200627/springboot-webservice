@@ -31,6 +31,7 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	implementation("com.h2database:h2") // 인메모리 관계형 데이터베이스(별도 설치 X, JPA 테스트용, 재시작 시 초기화됨)
 }
 
 tasks.withType<Test> {
