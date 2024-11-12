@@ -1,10 +1,14 @@
 package com.example.springboot_webservice.domain.posts;
 
-// JPA
-
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-//@Repository
+import java.util.List;
+
+@Repository
 public interface PostsRepository extends JpaRepository<Posts, Long>{
+
+    @Query("SELECT p FROM Posts p ORDER BY p.id DESC")
+    List<Posts> findAllDesc();
 }
