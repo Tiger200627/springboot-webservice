@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -42,6 +43,25 @@ public class PostsRepositoryTest {
         assertThat(posts.getContent()).isEqualTo(content);
     }
 
+    @Test // JPA Auditing 테스트
+    public void setBaseTimeEntity() {
+        // given
+        LocalDateTime now = LocalDateTime.now();
+        postsRepository.save(Posts.builder()
+                .title("title_baseTime")
+                .content("content_baseTime")
+                .author("author_baseTime")
+                .build());
+        // when
+        List<Posts> postsList = postsRepository.findAll();
+        // then
+        Posts posts = postsList.get(0);
+
+        System.out.println(">>>>>>>>>> createdDate="+posts.getCreatedDate());
+        System.out.println(">>>>>>>>>> modifiedDate="+posts.getModifiedDate());
+        assertThat(posts.getCreatedDate()).isAfter(now);
+        assertThat(posts.getModifiedDate()).isAfter(now);
+    }
 }
 
 /*
