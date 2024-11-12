@@ -23,11 +23,16 @@ public class PostsApiController {
         return postsService.update(id, requestDto);
     }
 
-    @GetMapping("/api/v1/posts/{id}")
+    @GetMapping("/api/v1/posts/{id}") // 조회
     public PostsResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
     }
 
+    @DeleteMapping("/api/v1/posts/{id}") // 삭제
+    public Long delete(@PathVariable Long id) {
+        postsService.delete(id);
+        return id;
+    }
 }
 /*
     주요 Mapping 어노테이션
@@ -37,4 +42,9 @@ public class PostsApiController {
     @PutMapping("/path"): HTTP PUT 요청을 매핑, 기존 리소스를 업데이트할 때 사용.
     @DeleteMapping("/path/{id}"): HTTP DELETE 요청을 매핑, 리소스를 삭제할 때 사용.
     @PatchMapping("/path/{id}"): HTTP PATCH 요청을 매핑, 리소스의 일부를 수정할 때 사용.
+
+    생성 Create - POST
+    읽기 Read - GET
+    수정 Update - PUT
+    삭제 Delete - DELETE
 */
