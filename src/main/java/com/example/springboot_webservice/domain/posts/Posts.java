@@ -2,6 +2,7 @@ package com.example.springboot_webservice.domain.posts;
 
 // JPA
 
+import com.example.springboot_webservice.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ import jakarta.persistence.Id;
 @Entity // 데이터베이스 테이블과 매핑될 클래스
 //@Table(name ="posts") 테이블 이름 지정
 //Entity 클래스에서는 Setter 메소드를 만들지 않는다. 대신 해당 필드의 값 변경이 필요하면 의도에 맞는 메소드명으로 추가한다.(ex. 주문취소-cancle())
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id // 기본키 PK
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 자동 생성
@@ -36,6 +37,11 @@ public class Posts {
         this.title = title;
         this.content = content;
         this.author = author;
+    }
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }
 
