@@ -33,6 +33,9 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("com.h2database:h2") // H2 인메모리 관계형 데이터베이스(별도 설치 X, JPA 테스트용, 재시작 시 초기화됨)
 	implementation("org.springframework.boot:spring-boot-starter-mustache") // 머스테치
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-client") // 소셜 로그인 등 소셜 기능 구현 시 필요
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.session:spring-session-jdbc") // 세션 저장소-jdbc (SPRING_SESSION, SPRING_SESSION_ATTRIBUTES 자동 생성)
 }
 
 tasks.withType<Test> {

@@ -1,5 +1,7 @@
 package com.example.springboot_webservice.web;
 
+import com.example.springboot_webservice.config.auth.LoginUser;
+import com.example.springboot_webservice.config.auth.dto.SessionUser;
 import com.example.springboot_webservice.service.posts.PostsService;
 import com.example.springboot_webservice.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +17,11 @@ public class IndexController {
     private final PostsService postsService;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc()); // 게시글 리스트
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         return "index";
     }
 
