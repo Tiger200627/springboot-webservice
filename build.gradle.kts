@@ -36,6 +36,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-client") // 소셜 로그인 등 소셜 기능 구현 시 필요
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.session:spring-session-jdbc") // 세션 저장소-jdbc (SPRING_SESSION, SPRING_SESSION_ATTRIBUTES 자동 생성)
+	testImplementation("org.springframework.security:spring-security-test") // 스프링 시큐리티 테스트
 }
 
 tasks.withType<Test> {
