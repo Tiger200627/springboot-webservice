@@ -5,6 +5,7 @@
 
 ### 프로젝트 환경
 - JAVA 17
+- Gradle 8.x
 - Spring Boot 3.3.5
 ![screencapture-start-spring-io-2024-11-09-15_41_49](https://github.com/user-attachments/assets/f783a7b7-fe3a-4829-9699-a8f8046d52a1)
 
